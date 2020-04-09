@@ -8,6 +8,18 @@ const computeInfectionsByRequestedTime = (
     weeks: timeToElapse * 7,
     months: timeToElapse * 30
   }[periodType];
+
+  const days = (function (periodType) {
+    switch (periodType) {
+      case 'days':
+        return Number(timeToElapse);
+      case 'weeks':
+        return Number(timeToElapse) * 7;
+      default:
+        return Number(timeToElapse) * 30;
+    }
+  })(periodType);
+
   const factor = Math.round(days / 3);
 
   const multiplier = 2 ** factor;
