@@ -8,9 +8,11 @@ const computeInfectionsByRequestedTime = (
     weeks: timeToElapse * 7,
     months: timeToElapse * 30
   }[periodType];
-  const factor = days / 3;
+  const factor = Math.round(days / 3);
 
-  return currentlyInfected * 2 ** factor;
+  const multiplier = 2 ** factor;
+
+  return currentlyInfected * multiplier;
 };
 
 const covid19ImpactEstimator = (data) => {
