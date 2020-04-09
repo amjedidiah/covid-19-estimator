@@ -3,14 +3,8 @@ const computeInfectionsByRequestedTime = (
   timeToElapse,
   currentlyInfected
 ) => {
-  const days = {
-    days: timeToElapse,
-    weeks: timeToElapse * 7,
-    months: timeToElapse * 30
-  }[periodType];
-
-  const days = (function (periodType) {
-    switch (periodType) {
+  const days = (type) => {
+    switch (type) {
       case 'days':
         return Number(timeToElapse);
       case 'weeks':
@@ -18,7 +12,7 @@ const computeInfectionsByRequestedTime = (
       default:
         return Number(timeToElapse) * 30;
     }
-  })(periodType);
+  };
 
   const factor = Math.round(days / 3);
 
