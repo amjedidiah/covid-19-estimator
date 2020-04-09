@@ -9,7 +9,7 @@ const computeInfectionsByRequestedTime = (
     months: timeToElapse * 30
   }[periodType];
 
-  const factor = Math.round(days / 3);
+  const factor = Math.floor(days / 3);
   const multiplier = 2 ** factor;
 
   return currentlyInfected * multiplier;
