@@ -3,19 +3,13 @@ const computeInfectionsByRequestedTime = (
   timeToElapse,
   currentlyInfected
 ) => {
-  const days = (type) => {
-    switch (type) {
-      case 'days':
-        return Number(timeToElapse);
-      case 'weeks':
-        return Number(timeToElapse) * 7;
-      default:
-        return Number(timeToElapse) * 30;
-    }
-  };
+  const days = {
+    days: timeToElapse,
+    weeks: timeToElapse * 7,
+    months: timeToElapse * 30
+  }[periodType];
 
   const factor = Math.round(days / 3);
-
   const multiplier = 2 ** factor;
 
   return currentlyInfected * multiplier;
@@ -24,31 +18,27 @@ const computeInfectionsByRequestedTime = (
 const covid19ImpactEstimator = (data) => {
   const { reportedCases, periodType, timeToElapse } = data;
 
-  // * * Impact Properties
-  const impactCurrentlyInfected = reportedCases * 10;
-  const impactInfectionsByRequestedTime = computeInfectionsByRequestedTime(
-    periodType,
-    timeToElapse,
-    impactCurrentlyInfected
-  );
-
-  // * * Severe Impact Properties
-  const severeCurrentlyInfected = reportedCases * 50;
-  const severeInfectionsByRequestedTime = computeInfectionsByRequestedTime(
-    periodType,
-    timeToElapse,
-    severeCurrentlyInfected
-  );
-
   return {
     data: {},
     impact: {
-      currentlyInfected: impactCurrentlyInfected,
-      infectionsByRequestedTime: impactInfectionsByRequestedTime
+      currentlyInfected: reportedCases * 10,
+      get infectionsByRequestedTime() {
+        return computeInfectionsByRequestedTime(
+          periodType,
+          timeToElapse,
+          this.currentlyInfected
+        );
+      }
     },
     severeImpact: {
-      currentlyInfected: severeCurrentlyInfected,
-      infectionsByRequestedTime: severeInfectionsByRequestedTime
+      currentlyInfected: reportedCases * 50,
+      get infectionsByRequestedTime() {
+        return computeInfectionsByRequestedTime(
+          periodType,
+          timeToElapse,
+          this.currentlyInfected
+        );
+      }
     }
   };
 };
