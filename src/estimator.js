@@ -41,7 +41,6 @@ const covid19ImpactEstimator = (data) => {
           periodType,
           timeToElapse,
           this.infectionsByRequestedTime,
-          avgDailyIncomePopulation,
           avgDailyIncomeInUSD
         );
       }
@@ -73,7 +72,6 @@ const covid19ImpactEstimator = (data) => {
           periodType,
           timeToElapse,
           this.infectionsByRequestedTime,
-          avgDailyIncomePopulation,
           avgDailyIncomeInUSD
         );
       }
