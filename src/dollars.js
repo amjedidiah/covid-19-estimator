@@ -12,10 +12,10 @@ const computeDollarsInFlight = (
   }[periodType];
 
   return (
-    infectionsByRequestedTime
+    Math.floor(infectionsByRequestedTime
     * avgDailyIncomePopulation
     * avgDailyIncomeInUSD
-    * days
+    * days)
   );
 };
 
