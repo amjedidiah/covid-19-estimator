@@ -77,7 +77,24 @@ const covid19ImpactEstimator = (data) => {
   };
 
   // eslint-disable-next-line no-console
-  console.log(data, obj);
+  console.log(
+    data,
+    obj.data,
+    obj.impact.currentlyInfected,
+    obj.impact.infectionsByRequestedTime,
+    obj.impact.severeCasesByRequestedTime,
+    obj.impact.hospitalBedsByRequestedTime,
+    obj.impact.casesForICUByRequestedTime,
+    obj.impact.casesForVentilatorsByRequestedTime,
+    obj.impact.dollarsInFlight,
+    obj.severeImpact.currentlyInfected,
+    obj.severeImpact.infectionsByRequestedTime,
+    obj.severeImpact.severeCasesByRequestedTime,
+    obj.severeImpact.hospitalBedsByRequestedTime,
+    obj.severeImpact.casesForICUByRequestedTime,
+    obj.severeImpact.casesForVentilatorsByRequestedTime,
+    obj.severeImpact.dollarsInFlight
+  );
   return obj;
 };
 
