@@ -20,7 +20,7 @@ const covid19ImpactEstimator = (data) => {
         return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime;
+        return Math.floor(totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime);
       }
     },
     severeImpact: {
@@ -36,7 +36,7 @@ const covid19ImpactEstimator = (data) => {
         return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime;
+        return Math.floor(totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime);
       }
     }
   };
