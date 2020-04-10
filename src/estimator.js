@@ -1,7 +1,9 @@
 import computeInfectionsByRequestedTime from './infections';
 
 const covid19ImpactEstimator = (data) => {
-  const { reportedCases, periodType, timeToElapse, totalHospitalBeds } = data;
+  const {
+    reportedCases, periodType, timeToElapse, totalHospitalBeds
+  } = data;
 
   return {
     data: {},
