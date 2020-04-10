@@ -12,7 +12,7 @@ const computeDollarsInFlight = (
 
   return (
     Math.floor(infectionsByRequestedTime
-    * 0.65
+    * 0
     * avgDailyIncomeInUSD
     * days)
   );
