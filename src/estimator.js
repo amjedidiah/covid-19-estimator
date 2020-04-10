@@ -1,9 +1,7 @@
 import computeInfectionsByRequestedTime from './infections';
 
 const covid19ImpactEstimator = (data) => {
-  const {
-    reportedCases, periodType, timeToElapse, totalHospitalBeds
-  } = data;
+  const { reportedCases, periodType, timeToElapse, totalHospitalBeds } = data;
 
   return {
     data: {},
@@ -17,10 +15,10 @@ const covid19ImpactEstimator = (data) => {
         );
       },
       get severeCasesByRequestedTime() {
-        return Math.ceil(0.15 * this.infectionsByRequestedTime);
+        return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return totalHospitalBeds - this.severeCasesByRequestedTime;
+        return totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime;
       }
     },
     severeImpact: {
@@ -33,10 +31,10 @@ const covid19ImpactEstimator = (data) => {
         );
       },
       get severeCasesByRequestedTime() {
-        return Math.ceil(0.15 * this.infectionsByRequestedTime);
+        return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return totalHospitalBeds - this.severeCasesByRequestedTime;
+        return totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime;
       }
     }
   };
