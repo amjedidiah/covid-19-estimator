@@ -10,12 +10,9 @@ const covid19ImpactEstimator = (data) => {
     // region
   } = data;
 
-  // eslint-disable-next-line no-console
-  console.log(data);
-
   // const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
-  return {
+  const obj = {
     data: {},
     impact: {
       currentlyInfected: reportedCases * 10,
@@ -78,6 +75,10 @@ const covid19ImpactEstimator = (data) => {
       }
     }
   };
+
+  // eslint-disable-next-line no-console
+  console.log(data, obj);
+  return obj;
 };
 
 export default covid19ImpactEstimator;
