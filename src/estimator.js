@@ -10,6 +10,9 @@ const covid19ImpactEstimator = (data) => {
     region
   } = data;
 
+  // eslint-disable-next-line no-console
+  console.log(data);
+
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   return {
