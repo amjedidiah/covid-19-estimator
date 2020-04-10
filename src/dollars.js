@@ -9,6 +9,8 @@ const computeDollarsInFlight = (
     months: timeToElapse * 30
   }[periodType];
 
+  // eslint-disable-next-line no-console
+  console.log(days);
 
   return Math.floor(
     infectionsByRequestedTime
