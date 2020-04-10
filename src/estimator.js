@@ -6,11 +6,11 @@ const covid19ImpactEstimator = (data) => {
     reportedCases,
     periodType,
     timeToElapse,
-    totalHospitalBeds
-    // region
+    totalHospitalBeds,
+    region
   } = data;
 
-  // const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   const obj = {
     data: {},
@@ -40,7 +40,9 @@ const covid19ImpactEstimator = (data) => {
         return computeDollarsInFlight(
           periodType,
           timeToElapse,
-          this.infectionsByRequestedTime
+          this.infectionsByRequestedTime,
+          avgDailyIncomeInUSD,
+          avgDailyIncomePopulation
         );
       }
     },
@@ -70,31 +72,14 @@ const covid19ImpactEstimator = (data) => {
         return computeDollarsInFlight(
           periodType,
           timeToElapse,
-          this.infectionsByRequestedTime
+          this.infectionsByRequestedTime,
+          avgDailyIncomeInUSD,
+          avgDailyIncomePopulation
         );
       }
     }
   };
 
-  // eslint-disable-next-line no-console
-  console.log(
-    data,
-    obj.data,
-    obj.impact.currentlyInfected,
-    obj.impact.infectionsByRequestedTime,
-    obj.impact.severeCasesByRequestedTime,
-    obj.impact.hospitalBedsByRequestedTime,
-    obj.impact.casesForICUByRequestedTime,
-    obj.impact.casesForVentilatorsByRequestedTime,
-    obj.impact.dollarsInFlight,
-    obj.severeImpact.currentlyInfected,
-    obj.severeImpact.infectionsByRequestedTime,
-    obj.severeImpact.severeCasesByRequestedTime,
-    obj.severeImpact.hospitalBedsByRequestedTime,
-    obj.severeImpact.casesForICUByRequestedTime,
-    obj.severeImpact.casesForVentilatorsByRequestedTime,
-    obj.severeImpact.dollarsInFlight
-  );
   return obj;
 };
 
