@@ -10,7 +10,7 @@ const covid19ImpactEstimator = (data) => {
     region
   } = data;
 
-  const { avgDailyIncomeInUSD } = region;
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   return {
     data: {},
@@ -41,7 +41,8 @@ const covid19ImpactEstimator = (data) => {
           periodType,
           timeToElapse,
           this.infectionsByRequestedTime,
-          avgDailyIncomeInUSD
+          avgDailyIncomeInUSD,
+          avgDailyIncomePopulation
         );
       }
     },
@@ -72,7 +73,8 @@ const covid19ImpactEstimator = (data) => {
           periodType,
           timeToElapse,
           this.infectionsByRequestedTime,
-          avgDailyIncomeInUSD
+          avgDailyIncomeInUSD,
+          avgDailyIncomePopulation
         );
       }
     }
