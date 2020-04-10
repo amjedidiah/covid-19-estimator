@@ -1,9 +1,7 @@
 const computeDollarsInFlight = (
   periodType,
   timeToElapse,
-  infectionsByRequestedTime,
-  avgDailyIncomeInUSD,
-  avgDailyIncomePopulation
+  infectionsByRequestedTime
 ) => {
   const days = {
     days: timeToElapse,
@@ -11,10 +9,9 @@ const computeDollarsInFlight = (
     months: timeToElapse * 30
   }[periodType];
 
+
   return Math.floor(
     infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD
       * days
   );
 };

@@ -6,14 +6,14 @@ const covid19ImpactEstimator = (data) => {
     reportedCases,
     periodType,
     timeToElapse,
-    totalHospitalBeds,
-    region
+    totalHospitalBeds
+    // region
   } = data;
 
   // eslint-disable-next-line no-console
   console.log(data);
 
-  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
+  // const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   return {
     data: {},
@@ -43,9 +43,7 @@ const covid19ImpactEstimator = (data) => {
         return computeDollarsInFlight(
           periodType,
           timeToElapse,
-          this.infectionsByRequestedTime,
-          avgDailyIncomeInUSD,
-          avgDailyIncomePopulation
+          this.infectionsByRequestedTime
         );
       }
     },
@@ -75,9 +73,7 @@ const covid19ImpactEstimator = (data) => {
         return computeDollarsInFlight(
           periodType,
           timeToElapse,
-          this.infectionsByRequestedTime,
-          avgDailyIncomeInUSD,
-          avgDailyIncomePopulation
+          this.infectionsByRequestedTime
         );
       }
     }
