@@ -1,9 +1,16 @@
 import computeInfectionsByRequestedTime from './infections';
+import computeDollarsInFlight from './dollars';
 
 const covid19ImpactEstimator = (data) => {
   const {
-    reportedCases, periodType, timeToElapse, totalHospitalBeds
+    reportedCases,
+    periodType,
+    timeToElapse,
+    totalHospitalBeds,
+    region
   } = data;
+
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   return {
     data: {},
@@ -20,7 +27,24 @@ const covid19ImpactEstimator = (data) => {
         return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return Math.ceil(totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime);
+        return Math.ceil(
+          totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime
+        );
+      },
+      get casesForICUByRequestedTime() {
+        return 0.05 * this.infectionsByRequestedTime;
+      },
+      get casesForVentilatorsByRequestedTime() {
+        return 0.02 * this.infectionsByRequestedTime;
+      },
+      get dollarsInFlight() {
+        return computeDollarsInFlight(
+          periodType,
+          timeToElapse,
+          this.infectionsByRequestedTime,
+          avgDailyIncomePopulation,
+          avgDailyIncomeInUSD
+        );
       }
     },
     severeImpact: {
@@ -36,7 +60,24 @@ const covid19ImpactEstimator = (data) => {
         return 0.15 * this.infectionsByRequestedTime;
       },
       get hospitalBedsByRequestedTime() {
-        return Math.ceil(totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime);
+        return Math.ceil(
+          totalHospitalBeds * 0.35 - this.severeCasesByRequestedTime
+        );
+      },
+      get casesForICUByRequestedTime() {
+        return 0.05 * this.infectionsByRequestedTime;
+      },
+      get casesForVentilatorsByRequestedTime() {
+        return 0.02 * this.infectionsByRequestedTime;
+      },
+      get dollarsInFlight() {
+        return computeDollarsInFlight(
+          periodType,
+          timeToElapse,
+          this.infectionsByRequestedTime,
+          avgDailyIncomePopulation,
+          avgDailyIncomeInUSD
+        );
       }
     }
   };
