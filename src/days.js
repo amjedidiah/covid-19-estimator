@@ -1,8 +1,9 @@
-const timeInDays = (timeToElapse, periodType) =>
-  ({
+const timeInDays = (timeToElapse, periodType) => {
+  return {
     days: timeToElapse,
     weeks: timeToElapse * 7,
     months: timeToElapse * 30
-  }[periodType]);
+  }[periodType];
+};
 
 export default timeInDays;
