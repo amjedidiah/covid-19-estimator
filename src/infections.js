@@ -1,13 +1,11 @@
+import timeInDays from './days';
+
 const computeInfectionsByRequestedTime = (
   periodType,
   timeToElapse,
   currentlyInfected
 ) => {
-  const days = {
-    days: timeToElapse,
-    weeks: timeToElapse * 7,
-    months: timeToElapse * 30
-  }[periodType];
+  const days = timeInDays(timeToElapse, periodType);
 
   const factor = Math.floor(days / 3);
   const multiplier = 2 ** factor;

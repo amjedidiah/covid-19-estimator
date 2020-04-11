@@ -1,3 +1,5 @@
+import timeInDays from './days';
+
 const computeDollarsInFlight = (
   periodType,
   timeToElapse,
@@ -5,17 +7,13 @@ const computeDollarsInFlight = (
   avgDailyIncomeInUSD,
   avgDailyIncomePopulation
 ) => {
-  const days = {
-    days: timeToElapse,
-    weeks: timeToElapse * 7,
-    months: timeToElapse * 30
-  }[periodType];
+  const days = timeInDays(timeToElapse, periodType);
 
   return Math.floor(
-    (infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD)
-      / days
+    (infectionsByRequestedTime *
+      avgDailyIncomePopulation *
+      avgDailyIncomeInUSD) /
+      days
   );
 };
 
