@@ -1,9 +1,11 @@
 const timeInDays = (timeToElapse, periodType) => {
-  return {
+  const count = {
     days: timeToElapse,
     weeks: timeToElapse * 7,
     months: timeToElapse * 30
   }[periodType];
+
+  return count;
 };
 
 export default timeInDays;
