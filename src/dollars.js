@@ -10,10 +10,10 @@ const computeDollarsInFlight = (
   const days = timeInDays(timeToElapse, periodType);
 
   return Math.floor(
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-      days
+    (infectionsByRequestedTime 
+      * avgDailyIncomePopulation 
+      * avgDailyIncomeInUSD)
+      / days
   );
 };
 
